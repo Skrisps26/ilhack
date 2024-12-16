@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Travel Booking Dapp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="min-h-screen p-4">
+        <!-- Header -->
+        <header class="neumorphic p-4 mb-8">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-700">Web3 Travel Booking</h1>
+                <button id="connectWallet" onclick="connectWallet()" class="neumorphic px-6 py-2 text-blue-600 font-medium">
+                    Connect Wallet
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="space-y-8">
+            <!-- Flight Search -->
+            <section class="neumorphic p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Search Flights</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="neumorphic-inset p-3">
+                        <input type="text" placeholder="From" class="w-full bg-transparent p-2 outline-none" id="from">
+                    </div>
+                    <div class="neumorphic-inset p-3">
+                        <input type="text" placeholder="To" class="w-full bg-transparent p-2 outline-none" id="to">
+                    </div>
+                    <div class="neumorphic-inset p-3">
+                        <input type="date" class="w-full bg-transparent p-2 outline-none" id="date">
+                    </div>
+                </div>
+                <button onclick="searchFlights()" class="neumorphic mt-4 px-6 py-2 text-blue-600 font-medium">
+                    Search Flights
+                </button>
+            </section>
+
+            <!-- Flight Results -->
+            <section id="flightResults" class="neumorphic p-6 hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Available Flights</h2>
+                <div class="space-y-4" id="flightsList">
+                    <!-- Flights will be populated here -->
+                </div>
+            </section>
+
+            <!-- Booking Confirmation -->
+            <section id="bookingConfirmation" class="neumorphic p-6 hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Booking Confirmation</h2>
+                <div id="bookingDetails" class="space-y-2">
+                    <!-- Booking details will be populated here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+            <div class="loading"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
